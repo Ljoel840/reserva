@@ -10,6 +10,11 @@ Vue.use(VueRouter)
     component: () => import('../home')
   },
   {
+    path: '/formulario',
+    name: 'Formulario',
+    component: () => import('../formulario')
+  },
+  {
     path: '/:ruta',
     redirect: { name: 'Home' }
   },

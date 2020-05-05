@@ -9,7 +9,7 @@
 			</div>
 			<div class="div2">
 				<img src="@/assets/paso2.png" alt="Paso2 Reserva">
-				<h3><span class="color">2</span>Sigue el/los lugar/es</h3>
+				<h3><span class="color">2</span>Sigue tus lugares</h3>
 			</div>
 			<div class="div3">
 				<img src="@/assets/paso3.png" alt="Paso3 Reserva">
@@ -19,13 +19,22 @@
 				<img src="@/assets/paso4.png" alt="Paso4 Reserva">
 				<h3><span class="color">4</span>Reserva tu turno</h3>
 			</div>
-
 		</div>
+		<h2>¿Quieres ver un video de su funcionamiento?</h2>
+		<button class="boton" @click="ir('Formulario')">PRESIONA AQUÍ</button>
 	</section>
 </template>
 <script>
 export default {
-	name:'funcionamiento'
+	name:'funcionamiento',
+	methods: {
+		ir (pag) {
+			// e.preventDefault()
+			this.$router.push({
+				name: pag, 
+			}).catch(() => {})
+		},
+	}
 }
 </script>
 <style scoped>
@@ -34,6 +43,12 @@ export default {
 	}
 	h1{
 		font-size:3em;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 300;
+		color: #32363f
+	}
+	h2{
+		font-size:2em;
 		font-family: 'Raleway', sans-serif;
 		font-weight: 300;
 		color: #32363f
@@ -86,4 +101,23 @@ export default {
 		text-align: center;
 		width: 1.6em; 
 	}
+    .boton {
+        display: block;
+        width: 150px;
+        margin: 2em auto;
+        border: 2px solid #FF6600;
+        /* background-color:#000; */
+		border-radius: 30px;
+        color: #FF6600;
+		padding: 10px;
+		outline:none;
+		cursor: pointer;
+    }
+    .boton:hover {
+        background-color: #000;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	.boton:active {
+		transform: translate(2px, 2px);
+    }
 </style>

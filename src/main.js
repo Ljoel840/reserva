@@ -4,8 +4,9 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import estilos from './assets/estilos.css'
  
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios, estilos)
 Vue.config.productionTip = false
 
 new Vue({

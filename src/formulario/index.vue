@@ -1,45 +1,51 @@
 <template>
-	<section id="contacto">
+	<article>
+		<span class="encabezado">
+			<div class="imagen"></div>
+			<img class='logoArriba' src="@/assets/logo_reserva.png" alt="logo ReserVa" @click="volver()">
+		</span>
 
-		<!-- <label>
-            <span>A través de WhatsApp</span>
-            <a href="https://api.whatsapp.com/send?phone=59896414738" target="_blank" rel="noopener noreferrer">
-                <img src="@/assets/whatsapp.png" alt="Logo de WhatsApp">
-                <span>Has clic aquí para enviarnos un WhatsApp</span>
-            </a>
-        </label> -->
+		<section id="contacto">
 
-		<h1>Contáctanos</h1>
-		<div class="separador"></div>
+			<!-- <label>
+				<span>A través de WhatsApp</span>
+				<a href="https://api.whatsapp.com/send?phone=59896414738" target="_blank" rel="noopener noreferrer">
+					<img src="@/assets/whatsapp.png" alt="Logo de WhatsApp">
+					<span>Has clic aquí para enviarnos un WhatsApp</span>
+				</a>
+			</label> -->
+			<h1>Contáctanos</h1>
+			<div class="separador"></div>
 
-        <p>
-            Si eres propietario de un negocio o un local escríbenos y te contactaremos 
-        </p>
-		<label v-for="c in campos" :key="c.idEnc" v-show="!enviado">
-			<span>{{c.titulo}} <strong>*</strong></span>
-			<input v-if="c.tipo === 'e'" v-model="c.valor" type="email" placeholder="Correo Electrónico" spellcheck="false">
-			<textarea v-if="c.tipo === 't'" v-model="c.valor" rows="3" :placeholder="c.titulo"></textarea>
-			<input v-if="c.tipo === 'p'" v-model="c.valor" type="phone" placeholder="Teléfono" spellcheck="false">
-			<input v-if="c.tipo === 'n'" v-model="c.valor" type="number" placeholder="0">
-			<input v-if="c.tipo === 'f'" v-model="c.valor" type="date">
-			<input v-if="c.tipo === 'h'" v-model="c.valor" type="time">
-		</label>
-		<!-- <spinner-circular v-if="cargando"/> -->
-		<span v-if="!cargando && !enviando && !enviado" class="obl">Los campos con (<strong>*</strong>) son obligatorios</span>
-		<span v-if="error" class="error">{{error}}</span>
-		<spinner-circular v-if="enviando" class="spinner"/>
-		<button v-else-if="!cargando && !enviado" @click="enviar()" aria-label="Enviar" class="accion">ENVIAR</button>
-		<!-- <span v-if="enviado" class="mensaje">Muchas gracias por contactarse</span> -->
-		<div id="snackbar">Muchas gracias por contactarse</div>
-		<!-- <button v-if="enviado" class="accion" @click="volver()">Volver</button> -->
-	</section>
+			<p>
+				Escríbenos y te enviaremos videos del funcionamiento de la mejor App de ReserVA de turnos 
+			</p>
+			<label v-for="c in campos" :key="c.idEnc" v-show="!enviado">
+				<span>{{c.titulo}} <strong>*</strong></span>
+				<input v-if="c.tipo === 'e'" v-model="c.valor" type="email" placeholder="Correo Electrónico" spellcheck="false">
+				<textarea v-if="c.tipo === 't'" v-model="c.valor" rows="3" :placeholder="c.titulo"></textarea>
+				<input v-if="c.tipo === 'p'" v-model="c.valor" type="phone" placeholder="Teléfono" spellcheck="false">
+				<input v-if="c.tipo === 'n'" v-model="c.valor" type="number" placeholder="0">
+				<input v-if="c.tipo === 'f'" v-model="c.valor" type="date">
+				<input v-if="c.tipo === 'h'" v-model="c.valor" type="time">
+			</label>
+			<!-- <spinner-circular v-if="cargando"/> -->
+			<span v-if="!cargando && !enviando && !enviado" class="obl">Los campos con (<strong>*</strong>) son obligatorios</span>
+			<span v-if="error" class="error">{{error}}</span>
+			<spinner-circular v-if="enviando" class="spinner"/>
+			<button v-else-if="!cargando && !enviado" @click="enviar()" aria-label="Enviar" class="accion">ENVIAR</button>
+			<!-- <span v-if="enviado" class="mensaje">Muchas gracias por contactarse</span> -->
+			<div id="snackbar">Muchas gracias por contactarse</div>
+			<!-- <button v-if="enviado" class="accion" @click="volver()">Volver</button> -->
+		</section>
+	</article>
 </template>
 <script>
 import extraer_contacto from './extraer_contacto'
 import enviar from './enviar'
 
 export default {
-	name:'contacto',
+	name:'Formulario',
 	components: {
         spinnerCircular: () => import ('@/assets/spinnerCircular')
     },
@@ -65,6 +71,9 @@ export default {
         this.cargando = false
 	},
 	methods: {
+		volver(){
+			this.$router.go(-1)
+		},
 		snack() {
 			var x = document.getElementById("snackbar");
 			x.className = "show";
@@ -192,6 +201,33 @@ export default {
 		font-family: 'Raleway', sans-serif;
 	}
 
+	.encabezado{
+		width: 100%;
+		height: 200px;
+		background: rgb(199,199,199);
+		background: radial-gradient(circle at 95% 90%, rgba(199,199,199,1) 0%, rgba(46,50,59,1) 80%);
+		text-align: left;
+		margin: 0;
+	}
+	.imagen{
+		height: 200px;
+		top: 0;
+		background-image: url("../assets/p_home.png");
+		min-height: 200px;
+		background-attachment: fixed;
+		background-position: right top;
+		background-repeat: no-repeat;
+		background-size: 30%;
+	}
+	.logoArriba{
+		position: absolute;
+		top: 10px;
+		width: 200px;
+		margin-left: 20vw;
+		margin-top: 20px;
+		cursor: pointer;
+		
+	}
 
     .obl {
         color: #FF6600;
@@ -212,13 +248,6 @@ export default {
 		outline:none;
 		cursor: pointer;
     }
-	.separador{
-		width: 80px;
-		height: 4px;
-		background-color: #FF6600;
-		margin: 10px auto;
-	}
-
 
     .accion:hover {
 		background-color: #000;
@@ -229,6 +258,12 @@ export default {
 		transform: translate(2px, 2px);
     }
 
+	.separador{
+		width: 80px;
+		height: 4px;
+		background-color: #FF6600;
+		margin: 10px auto;
+	}
     .spinner {
         margin: 2em auto;
     }
@@ -295,7 +330,7 @@ export default {
         }
 		article{
 		width: 100%;
-		margin: 1em auto;
+		margin: 0 auto;
 		}
 
     }
@@ -305,6 +340,16 @@ export default {
 			width: 100%;
 			max-width: 300px;
 			margin: auto;
+		}
+		.imagen{
+			height: 200px;
+			top: 0;
+			background-image: url("../assets/p_home.png");
+			min-height: 200px;
+			background-attachment: fixed;
+			background-position: right 50px;
+			background-repeat: no-repeat;
+			background-size: 50%;
 		}
 
 	}

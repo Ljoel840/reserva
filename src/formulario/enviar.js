@@ -34,6 +34,11 @@ export default (entrada) => new Promise ((resolve, reject) => {
     if (error) {
         reject(error)
     } else {
+		entrada.campos.forEach(campo => {
+			if (campo.titulo==='Mensaje') {
+				campo.valor='<Video> ' + campo.valor
+			}
+		})
         axios
         .post(`${process.env.API_CONTACT_URL}dfs60012`, entrada)
         .then(response => {
