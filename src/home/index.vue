@@ -16,7 +16,9 @@
 			<caracteristicas/>
 			<div class="imagenSeparador"></div>
 			<funcionamiento/>
-			<descargas :android="android" :ios="ios" />
+			<div id="prueba">
+				<descargas :android="android" :ios="ios" />
+			</div>
 			<contacto/>
 			
 			<p_footer :datos="datosRedes" v-if="datos.length>0" />
@@ -60,6 +62,27 @@ export default {
 	},
 	created() {
 		extraer(this)
+		// if (this.$route.redirectedFrom==='/descargar'){
+		// 	// var e = document.getElementById("prueba");
+		// 	// var y = e.scrollTop;
+		// 	// console.log('valor de y:'+y)
+		// 	var tope=0
+		// 	if (screen.width < 700){
+		// 		tope=5400
+		// 	}else if (screen.width < 845){
+		// 		tope=3800
+		// 	}else if (screen.width < 1375){
+		// 		tope=3500
+		// 	}else {
+		// 		tope=3000
+		// 	}
+
+		// 	window.scroll({
+		// 		top: tope,
+		// 		left: 0,
+		// 		behavior: 'smooth'
+		// 	});
+		// }
 	},
 	computed:{
 		ancho(){

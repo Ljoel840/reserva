@@ -72,7 +72,7 @@ export default {
 	},
 	methods: {
 		volver(){
-			this.$router.go(-1)
+			this.$router.push('Home')
 		},
 		snack() {
 			var x = document.getElementById("snackbar");
@@ -342,11 +342,6 @@ export default {
 			margin: auto;
 		}
 		.imagen{
-			height: 200px;
-			top: 0;
-			background-image: url("../assets/p_home.png");
-			min-height: 200px;
-			background-attachment: fixed;
 			background-position: right 50px;
 			background-repeat: no-repeat;
 			background-size: 50%;

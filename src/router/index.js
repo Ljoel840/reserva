@@ -6,7 +6,7 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: 'Home',
+	name: 'Home',
     component: () => import('../home')
   },
   {
@@ -14,6 +14,12 @@ Vue.use(VueRouter)
     name: 'Formulario',
     component: () => import('../formulario')
   },
+  {
+    path: '/descargar',
+    name: 'Descargar',
+    component: () => import('../descargar')
+  },
+
   {
     path: '/:ruta',
     redirect: { name: 'Home' }
