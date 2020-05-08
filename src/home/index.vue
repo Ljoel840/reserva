@@ -62,6 +62,7 @@ export default {
 	},
 	created() {
 		extraer(this)
+		
 		// if (this.$route.redirectedFrom==='/descargar'){
 		// 	// var e = document.getElementById("prueba");
 		// 	// var y = e.scrollTop;
@@ -77,11 +78,7 @@ export default {
 		// 		tope=3000
 		// 	}
 
-		// 	window.scroll({
-		// 		top: tope,
-		// 		left: 0,
-		// 		behavior: 'smooth'
-		// 	});
+		this.irArriba()
 		// }
 	},
 	computed:{

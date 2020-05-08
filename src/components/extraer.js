@@ -15,16 +15,10 @@ export default (componente) => {
         } else {
 			componente.datos = response.data.frontBlogs
 			for (let c in componente.datos) {
-				if (componente.datos[c].titulo.toUpperCase()==='ANDROID'){
-					componente.android = componente.datos[c].boton.accion
-				}else if (componente.datos[c].titulo.toUpperCase()==='IOS'){
-					componente.ios = componente.datos[c].boton.accion				
-				}else{
+				if ((componente.datos[c].titulo.toUpperCase()!='ANDROID')&&(componente.datos[c].titulo.toUpperCase()!='IOS')){
 					componente.datosRedes.push(componente.datos[c].boton)
 				}
-				
 			}
-			// console.log(componente.android)
         }
 
     })

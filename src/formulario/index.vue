@@ -38,16 +38,20 @@
 			<div id="snackbar">Muchas gracias por contactarse</div>
 			<!-- <button v-if="enviado" class="accion" @click="volver()">Volver</button> -->
 		</section>
+		<pa_footer/>
+
 	</article>
 </template>
 <script>
+import pa_footer from "@/components/pa_footer.vue"
 import extraer_contacto from './extraer_contacto'
 import enviar from './enviar'
 
 export default {
 	name:'Formulario',
 	components: {
-        spinnerCircular: () => import ('@/assets/spinnerCircular')
+		spinnerCircular: () => import ('@/assets/spinnerCircular'),
+		pa_footer
     },
 	data: () => ({
         cargando: true,
@@ -68,7 +72,8 @@ export default {
         catch (error) {
 			this.error = error
         }
-        this.cargando = false
+		this.cargando = false
+		this.irArriba()
 	},
 	methods: {
 		volver(){
@@ -77,7 +82,7 @@ export default {
 		snack() {
 			var x = document.getElementById("snackbar");
 			x.className = "show";
-			setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+			setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
 			this.$router.go(0)
 		},
 		async enviar () {
@@ -100,7 +105,15 @@ export default {
 				}
             }
             this.enviando = false
-        },
+		},
+		irArriba(){
+			window.scroll({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+			
+		}
     }
 }
 </script>

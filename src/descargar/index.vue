@@ -8,14 +8,12 @@
 			<h1>Descarga ReserVA</h1>
 			<div class="separador"></div>
 			<h3>Disponible para Android y iOS</h3>
-
-
-			<span class="contenedor">
-				<a :ref="android" class="android" v-if="android" target="_blank">
+			<span class="contenedor" v-if="datos.length>0">
+				<a :href="android" class="android" v-if="android" target="_blank">
 					<h2>Clickea en la imagen para ir a la Tienda </h2>
 				</a>
 				<div class="android" v-else><h2>Próximamente en GooglePlay </h2></div>
-				<a :ref="ios" class="ios" v-if="ios" target="_blank">
+				<a :href="ios" class="ios" v-if="ios" target="_blank">
 					<h2>Clickea en la imagen para ir a la Tienda </h2>
 				</a>
 				<div class="ios" v-else><h2>Próximamente en Apple Store </h2></div>
@@ -23,15 +21,19 @@
 			</span>
 		<h2 style="color: #9b9b9b; padding-bottom:0">¿Quieres ver un video de su funcionamiento?</h2>
 		<button class="boton" @click="ir('Formulario')">PRESIONA AQUÍ</button>
-
+		<pa_footer/>
 
 	</article>
 </template>
 <script>
+import pa_footer from "@/components/pa_footer.vue"
 import extraer from './extraer'
 
 export default {
 	name:'descargar',
+	components:{
+		pa_footer
+	},
 	data() {
 		return {
 			datos:[],
@@ -39,11 +41,13 @@ export default {
 			android:'',
 			ios:'',
 			error: null,
-			cargando: true
+			cargando: true,
+			pag:'/'
 		}
 	},
 	created() {
 		extraer(this)
+		this.irArriba()
 	},
 	methods:{
 		volver(){
@@ -55,6 +59,14 @@ export default {
 				name: pag, 
 			}).catch(() => {})
 		},
+		irArriba(){
+			window.scroll({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+			
+		}
 
 	}
 }
@@ -94,7 +106,9 @@ export default {
 		margin: 0
 	}
 
-
+	span{
+		margin: auto;
+	}
 
     span {
         color: #000;
@@ -124,6 +138,7 @@ export default {
 		margin: 0;
 	}
 	.imagen{
+		width: 100%;
 		height: 200px;
 		top: 0;
 		background-image: url("../assets/p_home.png");
@@ -157,6 +172,7 @@ export default {
 		display: flex;
 		justify-content: center;
 		cursor: pointer;
+		text-decoration: none;
 	}
 	div{
 		width: 500px;
@@ -252,7 +268,10 @@ export default {
     }
 
 
-    @media (max-width: 900px) {
+   @media (max-width: 900px) {
+        /* article > * {
+            width: 80%;
+        } */
 		article{
 		width: 100%;
 		margin: 0 auto;
