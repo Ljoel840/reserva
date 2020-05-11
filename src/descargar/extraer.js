@@ -19,6 +19,8 @@ export default (componente) => {
 					componente.android = componente.datos[c].boton.accion
 				}else if (componente.datos[c].titulo.toUpperCase()==='IOS'){
 					componente.ios = componente.datos[c].boton.accion				
+				}else if (componente.datos[c].titulo.toUpperCase()==='WEB'){
+					componente.web = componente.datos[c].boton.accion				
 				}else{
 					componente.datosRedes.push(componente.datos[c].boton)
 				}

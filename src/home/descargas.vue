@@ -3,7 +3,7 @@
 		<div class="contenedor">
 		<h1>Descarga ReserVA</h1>
 		<div class="separador"></div>
-		<h3>Disponible para Android y iOS</h3>
+		<h3>Disponible para Android, iOS y vía Web</h3>
 		<h2 v-if="!android && !ios">MUY PRONTO</h2>
 		<span class="botones" v-else>
 			<a :href="android" v-if="android" target="_blank">
@@ -23,7 +23,16 @@
 					<font class="texto2">iOS</font>
 				</span>
 			</a>
-			<h3 class="pronto" v-else>Pronto para iOS</h3>
+			<h3 class="pronto" v-else>Pronto para iOs</h3>
+			<a :href="web" v-if="web" target="_blank">
+				<i class="fa fa-desktop" aria-hidden="true"></i>
+				<span class="contenedorBoton">
+					<font class="texto1">(vía Web)</font>
+					<br>
+					<font class="texto2">Pc'S</font>
+				</span>
+			</a>
+			<h3 class="pronto" v-else>Pronto para Pc's</h3>
 		</span>
 		</div>
 	</section>
@@ -34,6 +43,7 @@ export default {
 	props:{
 		android: String,
 		ios: String,
+		web:String
 	}
 }
 </script>
@@ -126,7 +136,8 @@ export default {
 	}
 
 	.pronto {
-		margin-top: 20px
+		margin: 20px;
+		
 	}
 	.separador{
 		width: 80px;

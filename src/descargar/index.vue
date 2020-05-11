@@ -7,7 +7,7 @@
 	
 			<h1>Descarga ReserVA</h1>
 			<div class="separador"></div>
-			<h3>Disponible para Android y iOS</h3>
+			<h3>Disponible para Android, iOS y vía Web</h3>
 			<span class="contenedor" v-if="datos.length>0">
 				<a :href="android" class="android" v-if="android" target="_blank">
 					<h2>Clickea en la imagen para ir a la Tienda </h2>
@@ -18,6 +18,12 @@
 				</a>
 				<div class="ios" v-else><h2>Próximamente en Apple Store </h2></div>
 				<img  class="phone" src="@/assets/smartphone.png" alt="smartphone Reserva">
+			</span>
+			<span>
+				<a :href="web" class="web" v-if="web" target="_blank">
+					<h2>Clickea en la imagen para ir a la página </h2>
+				</a>
+				<div class="web" v-else><h2>Próximamente para Pc's </h2></div>
 			</span>
 		<h2 style="color: #9b9b9b; padding-bottom:0">¿Quieres ver un video de su funcionamiento?</h2>
 		<button class="boton" @click="ir('Formulario')">PRESIONA AQUÍ</button>
@@ -40,6 +46,7 @@ export default {
 			descargas:[],
 			android:'',
 			ios:'',
+			web:'',
 			error: null,
 			cargando: true,
 			pag:'/'
@@ -88,7 +95,8 @@ export default {
 		font-size:3em;
 		font-family: 'Raleway', sans-serif;
 		font-weight: 300;
-		color: #32363f
+		color: #32363f;
+		margin-top: 10px;
 	}
 
 	h2 {
@@ -200,6 +208,32 @@ export default {
 		border: 2px solid #999;
 
 	}
+	.web{
+		width: 1000px;
+		margin: auto;
+		height: 100px;
+		background-color: #FF6600;
+		border: 2px solid #ff6600;
+		background-image: url("../assets/i_web_blanco.png");
+		background-position: 90%;
+		background-repeat: no-repeat;
+		background-size: 20%;
+
+
+	}
+	.web:hover{
+		background-color: #fff;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		background-image: url("../assets/i_web_naranja.png");
+
+	}
+	.web h2 {
+		max-width: 300px;
+	}
+	.web:hover h2{
+		color: #FF6600;
+	}
+
 	.ios:hover h2{
 		color: #999;
 	}
@@ -295,9 +329,23 @@ export default {
 
 	@media (max-width: 1000px) {
 		.phone{
-		height: 140px;
-		margin-top: 380px;
-	}
+			height: 140px;
+			margin-top: 380px;
+		}
+		.web{
+			width: 500px;
+			height: 150px;
+			background-position: center 80px;
+
+			
+		}
+
+    }
+	@media (max-width: 500px) {
+		.web{
+			width: 100%;
+		
+		}
 
     }
 

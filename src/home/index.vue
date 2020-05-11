@@ -17,7 +17,7 @@
 			<div class="imagenSeparador"></div>
 			<funcionamiento/>
 			<div id="prueba">
-				<descargas :android="android" :ios="ios" />
+				<descargas :android="android" :ios="ios" :web="web" />
 			</div>
 			<contacto/>
 			
@@ -56,6 +56,7 @@ export default {
 			descargas:[],
 			android:'',
 			ios:'',
+			web:'',
 			error: null,
 			cargando: true
 		}
