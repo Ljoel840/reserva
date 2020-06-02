@@ -1,7 +1,7 @@
 {
   "name": "reserva",
-  "version": "0.2.5",
-  "env": "prod",
+  "version": "0.2.6",
+  "env": "test",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

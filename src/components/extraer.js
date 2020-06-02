@@ -15,7 +15,7 @@ export default (componente) => {
         } else {
 			componente.datos = response.data.frontBlogs
 			for (let c in componente.datos) {
-				if ((componente.datos[c].titulo.toUpperCase()!='ANDROID')&&(componente.datos[c].titulo.toUpperCase()!='IOS')){
+				if ((componente.datos[c].titulo.toUpperCase()!='ANDROID')&&(componente.datos[c].titulo.toUpperCase()!='IOS')&&(componente.datos[c].titulo.toUpperCase()!='WEB')){
 					componente.datosRedes.push(componente.datos[c].boton)
 				}
 			}
